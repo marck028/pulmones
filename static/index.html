@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico Pulmonar por IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Diagnóstico Pulmonar Asistido por IA</h1>
+            <p>Sube una radiografía de tórax (CXR) para pre-clasificación automática.</p>
+        </header>
+        
+        <main>
+            <div class="upload-section" id="drop-area">
+                <div class="upload-content">
+                    <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                    <h3>Arrastra y suelta la radiografía aquí</h3>
+                    <p>o haz clic para seleccionar (PNG, JPG)</p>
+                    <input type="file" id="fileElem" accept="image/*" style="display:none">
+                    <button class="btn-upload" id="btn-browse">Seleccionar Archivo</button>
+                </div>
+                <div class="preview-container hidden" id="preview-container">
+                    <img id="image-preview" src="" alt="Vista previa">
+                    <button class="btn-upload btn-analyze" id="btn-analyze">Analizar Radiografía</button>
+                    <button class="btn-clear" id="btn-clear">Limpiar</button>
+                </div>
+            </div>
+
+            <div class="loading hidden" id="loading">
+                <div class="spinner"></div>
+                <p>Analizando con modelo híbrido CNN-ViT...</p>
+            </div>
+
+            <div class="results-section hidden" id="results-section">
+                <h2>Resultado del Diagnóstico</h2>
+                <div class="result-card">
+                    <h3 class="prediction-title" id="prediction-title">-</h3>
+                    <div class="confidence-bar-bg">
+                        <div class="confidence-bar-fill" id="confidence-bar-fill" style="width: 0%;"></div>
+                    </div>
+                    <p class="confidence-text">Confianza: <span id="confidence-text">0%</span></p>
+                </div>
+                
+                <div class="details">
+                    <h4>Desglose de Probabilidades</h4>
+                    <ul id="probabilities-list">
+                        <!-- Las probabilidades se insertan aquí -->
+                    </ul>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Desarrollado para Hospital UNIVALLE Cochabamba • Basado en modelo CNN-ViT (O.V.P.)</p>
+        </footer>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
