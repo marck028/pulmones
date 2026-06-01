@@ -53,7 +53,8 @@ function App() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8000/predict/', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${apiUrl}/predict/`, {
         method: 'POST',
         body: formData,
       });
@@ -152,8 +153,8 @@ function App() {
             </div>
 
             <div className={result ? "results-grid" : ""} style={{ display: 'flex', flexDirection: result ? 'row' : 'column', alignItems: 'center', gap: '2rem' }}>
-              <div style={{ flex: 1, width: '100%' }}>
-                <img src={preview} alt="Radiografía" className="image-preview" />
+              <div style={{ flex: 1, width: '100%', display: 'flex', justifyContent: 'center' }}>
+                <img src={preview} alt="Radiografía" className="image-preview" style={{ maxWidth: '400px', maxHeight: '400px', width: '100%', objectFit: 'contain', borderRadius: '16px' }} />
               </div>
               
               {result ? (
