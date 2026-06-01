@@ -5,3 +5,8 @@ Dataset_Procesado/
 env/
 venv/
 .env
+
+# Archivos locales o pesados que no se suben
+Of_inv__pulmones.pdf
+pruebas/
+*.png
